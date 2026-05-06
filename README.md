@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Youth_Speak
 =======
 # 🌟 SkillBridge TN - Plateforme de Matching Talents & Entreprises
@@ -360,4 +360,4 @@ Ce projet est sous license **MIT**. Voir [LICENSE](LICENSE) pour plus de détail
 
 
 **© 2026 SkillBridge TN** • Connecter les talents aux opportunités 🚀
->>>>>>> dfb915b (add project files)
+
