@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "React Developer",
+    "description": "Développeur React expérimenté avec 3 ans d'expérience dans la création de sites modernes et performants",
+    "tags": ["React", "Développement Web", "Node.js"],
+    "region": "Tunis",
+    "author": "Ahmed Ben Ali",
+    "contact": "+216 12 345 678"
+  },
+  {
+    "id": 2,
+    "title": "Designer Graphique",
+    "description": "Designer spécialisé en UI/UX et en création de logos pour les PME",
+    "tags": ["Design", "UI/UX", "Logo"],
+    "region": "Sfax",
+    "author": "Mariem Khaled",
+    "contact": "+216 98 765 432"
+  },
+  {
+    "id": 3,
+    "title": "Spécialiste SEO",
+    "description": "Expert en optimisation SEO et marketing digital pour accroître la visibilité en ligne",
+    "tags": ["SEO", "Marketing", "Digitalisation"],
+    "region": "Sousse",
+    "author": "Karim Bouali",
+    "contact": "+216 55 123 456"
+  }
+]

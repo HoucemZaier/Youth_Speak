@@ -1,0 +1,32 @@
+[
+  {
+    "id": 101,
+    "title": "Créer un site e-commerce",
+    "description": "Nous cherchons à créer un site e-commerce moderne avec React et Node.js pour vendre nos produits en ligne",
+    "tags": ["React", "Développement Web", "Node.js"],
+    "region": "Tunis",
+    "author": "StartUp Tech Tunis",
+    "contact": "+216 71 123 456",
+    "budget": "2000-3000 TND"
+  },
+  {
+    "id": 102,
+    "title": "Refonte graphique de logo",
+    "description": "Besoin de refaire notre logo et notre identité visuelle pour moderniser notre marque",
+    "tags": ["Design", "Logo", "UI/UX"],
+    "region": "Sfax",
+    "author": "PME Textiles Sfax",
+    "contact": "+216 74 654 321",
+    "budget": "500-800 TND"
+  },
+  {
+    "id": 103,
+    "title": "Optimiser notre présence SEO",
+    "description": "Nous voulons améliorer notre référencement et notre visibilité sur Google pour attirer plus de clients",
+    "tags": ["SEO", "Marketing", "Digitalisation"],
+    "region": "Sousse",
+    "author": "Commerce Local Sousse",
+    "contact": "+216 73 987 654",
+    "budget": "300-500 TND"
+  }
+]

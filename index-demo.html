@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillBridge TN - Connecter Talents et Besoins</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom right, #f0f9ff, #e0e7ff, #f3e8ff);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #3b82f6;
+            transition: box-shadow 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-6 py-8">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h1 class="text-4xl font-bold mb-2">SkillBridge TN</h1>
+                    <p class="text-blue-100 text-lg">Connecter les talents aux opportunités en Tunisie</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-4 text-sm">
+                <div class="bg-blue-500 bg-opacity-50 p-4 rounded-lg">
+                    <p class="font-bold">ODD 8</p>
+                    <p>Emploi décent & opportunités</p>
+                </div>
+                <div class="bg-green-500 bg-opacity-50 p-4 rounded-lg">
+                    <p class="font-bold">ODD 9</p>
+                    <p>Industrie & digitalisation</p>
+                </div>
+                <div class="bg-yellow-500 bg-opacity-50 p-4 rounded-lg">
+                    <p class="font-bold">ODD 17</p>
+                    <p>Partenariats & collaboration</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-6 py-12">
+        <!-- Onglets Navigation -->
+        <div class="flex gap-4 mb-12 justify-center flex-wrap">
+            <button onclick="showTab('skills')" class="px-8 py-3 bg-green-600 text-white rounded-lg font-bold hover:bg-green-700 transition">Poster une Compétence</button>
+            <button onclick="showTab('needs')" class="px-8 py-3 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transition">Poster un Besoin</button>
+            <button onclick="showTab('matches')" class="px-8 py-3 bg-purple-600 text-white rounded-lg font-bold hover:bg-purple-700 transition">Voir les Matchings</button>
+        </div>
+
+        <!-- Section 1: Poster une Compétence -->
+        <div id="skills" class="tab-content active">
+            <form onsubmit="addSkill(event)" class="bg-white rounded-lg shadow-lg p-8 max-w-2xl mx-auto mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Poster une Compétence</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <input type="text" id="skillTitle" placeholder="Titre de la compétence (ex: React Developer)" 
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500" required>
+                    <input type="text" id="skillAuthor" placeholder="Votre nom" 
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500" required>
+                </div>
+
+                <textarea id="skillDescription" placeholder="Décrivez votre compétence en détail..." 
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2 h-24 focus:outline-none focus:border-blue-500 mb-4" required></textarea>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2">Tags:</label>
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <button type="button" onclick="toggleTag(this, 'skillTags')" class="px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-800 hover:bg-gray-300">React</button>
+                        <button type="button" onclick="toggleTag(this, 'skillTags')" class="px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-800 hover:bg-gray-300">Node.js</button>
+                        <button type="button" onclick="toggleTag(this, 'skillTags')" class="px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-800 hover:bg-gray-300">Design</button>
+                        <button type="button" onclick="toggleTag(this, 'skillTags')" class="px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-800 hover:bg-gray-300">Marketing</button>
+                        <button type="button" onclick="toggleTag(this, 'skillTags')" class="px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-800 hover:bg-gray-300">SEO</button>
+                    </div>
+                    <div id="skillTagsSelected" class="flex flex-wrap gap-2"></div>
+                </div>
+
+                <select id="skillRegion" class="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:border-blue-500">
+                    <option>Tunis</option>
+                    <option>Sfax</option>
+                    <option>Sousse</option>
+                    <option>Kairouan</option>
+                    <option>Gabès</option>
+                </select>
+
+                <input type="text" id="skillContact" placeholder="Votre numéro WhatsApp" 
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:border-blue-500">
+
+                <button type="submit" class="w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition">Poster la Compétence</button>
+            </form>
+        </div>
+
+        <!-- Section 2: Poster un Besoin -->
+        <div id="needs" class="tab-content">
+            <form onsubmit="addNeed(event)" class="bg-white rounded-lg shadow-lg p-8 max-w-2xl mx-auto mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Poster un Besoin</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <input type="text" id="needTitle" placeholder="Titre du besoin (ex: Créer mon site web)" 
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500" required>
+                    <input type="text" id="needAuthor" placeholder="Nom de l'entreprise/organisation" 
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500" required>
+                </div>
+
+                <textarea id="needDescription" placeholder="Décrivez votre besoin en détail..." 
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2 h-24 focus:outline-none focus:border-blue-500 mb-4" required></textarea>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-bold mb-2">Compétences requises:</label>
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <button type="button" onclick="toggleTag(this, 'needTags')" class="px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-800 hover:bg-gray-300">React</button>
+                        <button type="button" onclick="toggleTag(this, 'needTags')" class="px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-800 hover:bg-gray-300">Node.js</button>
+                        <button type="button" onclick="toggleTag(this, 'needTags')" class="px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-800 hover:bg-gray-300">Design</button>
+                        <button type="button" onclick="toggleTag(this, 'needTags')" class="px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-800 hover:bg-gray-300">Marketing</button>
+                        <button type="button" onclick="toggleTag(this, 'needTags')" class="px-3 py-1 rounded-full text-sm bg-gray-200 text-gray-800 hover:bg-gray-300">SEO</button>
+                    </div>
+                    <div id="needTagsSelected" class="flex flex-wrap gap-2"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <select id="needRegion" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500">
+                        <option>Tunis</option>
+                        <option>Sfax</option>
+                        <option>Sousse</option>
+                        <option>Kairouan</option>
+                        <option>Gabès</option>
+                    </select>
+                    <input type="text" id="needBudget" placeholder="Budget (ex: 500-1000 TND)" 
+                        class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500">
+                </div>
+
+                <input type="text" id="needContact" placeholder="Votre numéro WhatsApp" 
+                    class="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:border-blue-500">
+
+                <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition">Poster le Besoin</button>
+            </form>
+        </div>
+
+        <!-- Section 3: Résultats de Matching -->
+        <div id="matches" class="tab-content">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">Résultats du Matching</h2>
+            <div id="matchResults" class="space-y-8"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-6 mt-12">
+        <p>SkillBridge TN — Connecter les talents aux opportunités</p>
+        <p class="text-sm text-gray-400 mt-2">Pour les ODD 8, 9 et 17 des Nations Unies</p>
+    </footer>
+
+    <script>
+        let skills = JSON.parse(localStorage.getItem('skillbridgeSkills')) || [
+            { id: 1, title: "React Developer", description: "Développeur React expérimenté avec 3 ans d'expérience", tags: ["React", "Node.js"], region: "Tunis", author: "Ahmed Ben Ali", contact: "+216 12 345 678" },
+            { id: 2, title: "Designer Graphique", description: "Designer spécialisé en UI/UX et création de logos", tags: ["Design"], region: "Sfax", author: "Mariem Khaled", contact: "+216 98 765 432" }
+        ];
+
+        let needs = JSON.parse(localStorage.getItem('skillbridgeNeeds')) || [
+            { id: 101, title: "Créer un site e-commerce", description: "Nous cherchons à créer un site e-commerce moderne", tags: ["React", "Node.js"], region: "Tunis", author: "StartUp Tech", contact: "+216 71 123 456", budget: "2000-3000 TND" },
+            { id: 102, title: "Refonte graphique de logo", description: "Besoin de refaire notre logo et identité visuelle", tags: ["Design"], region: "Sfax", author: "PME Textiles", contact: "+216 74 654 321", budget: "500-800 TND" }
+        ];
+
+        let selectedSkillTags = [];
+        let selectedNeedTags = [];
+
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            if (tabName === 'matches') {
+                updateMatches();
+            }
+        }
+
+        function toggleTag(button, tagType) {
+            button.classList.toggle('bg-blue-600');
+            button.classList.toggle('text-white');
+            button.classList.toggle('bg-gray-200');
+            button.classList.toggle('text-gray-800');
+
+            const tag = button.textContent;
+            if (tagType === 'skillTags') {
+                if (selectedSkillTags.includes(tag)) {
+                    selectedSkillTags = selectedSkillTags.filter(t => t !== tag);
+                } else {
+                    selectedSkillTags.push(tag);
+                }
+                updateTagDisplay('skillTagsSelected', selectedSkillTags);
+            } else {
+                if (selectedNeedTags.includes(tag)) {
+                    selectedNeedTags = selectedNeedTags.filter(t => t !== tag);
+                } else {
+                    selectedNeedTags.push(tag);
+                }
+                updateTagDisplay('needTagsSelected', selectedNeedTags);
+            }
+        }
+
+        function updateTagDisplay(elementId, tags) {
+            document.getElementById(elementId).innerHTML = tags.map(tag => 
+                `<span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">${tag}</span>`
+            ).join('');
+        }
+
+        function addSkill(event) {
+            event.preventDefault();
+            const skill = {
+                id: Date.now(),
+                title: document.getElementById('skillTitle').value,
+                description: document.getElementById('skillDescription').value,
+                tags: selectedSkillTags,
+                region: document.getElementById('skillRegion').value,
+                author: document.getElementById('skillAuthor').value,
+                contact: document.getElementById('skillContact').value
+            };
+            skills.push(skill);
+            localStorage.setItem('skillbridgeSkills', JSON.stringify(skills));
+            alert('Compétence ajoutée avec succès!');
+            event.target.reset();
+            selectedSkillTags = [];
+            updateTagDisplay('skillTagsSelected', []);
+        }
+
+        function addNeed(event) {
+            event.preventDefault();
+            const need = {
+                id: Date.now(),
+                title: document.getElementById('needTitle').value,
+                description: document.getElementById('needDescription').value,
+                tags: selectedNeedTags,
+                region: document.getElementById('needRegion').value,
+                author: document.getElementById('needAuthor').value,
+                contact: document.getElementById('needContact').value,
+                budget: document.getElementById('needBudget').value
+            };
+            needs.push(need);
+            localStorage.setItem('skillbridgeNeeds', JSON.stringify(needs));
+            alert('Besoin ajouté avec succès!');
+            event.target.reset();
+            selectedNeedTags = [];
+            updateTagDisplay('needTagsSelected', []);
+        }
+
+        function tokenize(text) {
+            return text.toLowerCase().split(/[^a-zA-Z0-9]+/).filter(w => w.length > 2);
+        }
+
+        function matchSkills(need) {
+            const needWords = new Set(tokenize(need.description));
+            const needTags = new Set(need.tags.map(t => t.toLowerCase()));
+
+            return skills.map(skill => {
+                const skillWords = tokenize(skill.description);
+                const skillTags = new Set(skill.tags.map(t => t.toLowerCase()));
+
+                const wordScore = skillWords.filter(w => needWords.has(w)).length;
+                const tagScore = [...skillTags].filter(t => needTags.has(t)).length;
+                const totalScore = wordScore + (tagScore * 2);
+
+                return { ...skill, score: totalScore };
+            })
+            .filter(s => s.score > 0)
+            .sort((a, b) => b.score - a.score);
+        }
+
+        function updateMatches() {
+            const resultsDiv = document.getElementById('matchResults');
+                if (needs.length === 0) {
+                resultsDiv.innerHTML = '<div class="bg-blue-50 border-2 border-dashed border-blue-300 rounded-lg p-12 text-center"><p class="text-blue-800 text-xl">Aucun matching disponible</p></div>';
+                return;
+            }
+
+            resultsDiv.innerHTML = needs.map(need => {
+                const matches = matchSkills(need);
+                const html = `
+                    <div class="mb-12">
+                            <div class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg p-6 mb-6">
+                            <h3 class="text-2xl font-bold text-gray-800">Besoin: ${need.title}</h3>
+                            <p class="text-gray-600 mt-2">${need.author} - ${need.region} | Budget: ${need.budget || 'N/A'}</p>
+                        </div>
+                        ${matches.length > 0 ? `
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                ${matches.slice(0, 6).map(skill => `
+                                    <div class="card">
+                                        <div class="flex justify-between items-start mb-3">
+                                            <div>
+                                                <h4 class="text-xl font-bold text-gray-800">${skill.title}</h4>
+                                                <p class="text-sm text-gray-500">Compétence</p>
+                                            </div>
+                                            <div class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-bold">
+                                                Match: ${Math.round((skill.score / (need.tags?.length || 1)) * 100)}%
+                                            </div>
+                                        </div>
+                                        <p class="text-gray-700 mb-3">${skill.description}</p>
+                                        <div class="flex flex-wrap gap-2 mb-3">
+                                            ${skill.tags.map(tag => `<span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs">${tag}</span>`).join('')}
+                                        </div>
+                                        <div class="flex justify-between text-sm text-gray-600 mb-3">
+                                            <span>${skill.region}</span>
+                                            <span>${skill.author}</span>
+                                        </div>
+                                        <a href="https://wa.me/${skill.contact.replace(/[^0-9]/g, '')}" target="_blank" class="block w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition text-center">
+                                            Contacter via WhatsApp
+                                        </a>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : `
+                            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center">
+                                <p class="text-yellow-800 text-lg">Aucune compétence correspondante trouvée</p>
+                            </div>
+                        `}
+                    </div>
+                `;
+                return html;
+            }).join('');
+        }
+    </script>
+</body>
+</html>

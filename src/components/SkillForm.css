@@ -1,0 +1,19 @@
+/* Talents page */
+
+.skill-form.form-shell {
+  padding: var(--spacing-xl) 0;
+}
+
+.skill-form .form-container {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+  .skill-form.form-shell {
+    padding: var(--spacing-lg) 0;
+  }
+}

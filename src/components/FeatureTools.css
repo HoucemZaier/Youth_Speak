@@ -1,0 +1,15 @@
+/* Fonctionnalites page */
+
+.feature-tool {
+  padding: var(--spacing-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.feature-tool .feature-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
