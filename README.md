@@ -1,6 +1,3 @@
-
-# Youth_Speak
-
 # 🌟 SkillBridge TN - Plateforme de Matching Talents & Entreprises
 
 > Une plateforme moderne et responsive pour connecter les talents aux opportunités en Tunisie et accélérer les recrutements.
