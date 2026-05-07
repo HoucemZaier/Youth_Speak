@@ -333,6 +333,7 @@ const [skills, setSkills] = useState(() => {
 ## 🤝 Contribution
 
 ### Process
+
 1. Fork le repository
 2. Créez une branche (`git checkout -b feature/AmazingFeature`)
 3. Commit vos changements (`git commit -m 'Add AmazingFeature'`)
@@ -340,6 +341,7 @@ const [skills, setSkills] = useState(() => {
 5. Ouvrez une Pull Request
 
 ### Guidelines
+
 - Respectez le style de code existant
 - Testez sur mobile et desktop
 - Mettez à jour la documentation
@@ -348,8 +350,6 @@ const [skills, setSkills] = useState(() => {
 ---
 
 
-
-## 📄 License
 
 Ce projet est sous license **MIT**. Voir [LICENSE](LICENSE) pour plus de détails.
 
