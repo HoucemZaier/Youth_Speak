@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 # Youth_Speak
-=======
+
 # 🌟 SkillBridge TN - Plateforme de Matching Talents & Entreprises
 
 > Une plateforme moderne et responsive pour connecter les talents aux opportunités en Tunisie et accélérer les recrutements.
@@ -9,7 +8,6 @@
 ![React](https://img.shields.io/badge/React-19.2.5-61dafb)
 ![Vite](https://img.shields.io/badge/Vite-8.0.10-646cff)
 ![Tailwind](https://img.shields.io/badge/Tailwind%20CSS-4.2.4-06b6d4)
-![License](https://img.shields.io/badge/license-MIT-green)
 
 ---
 
@@ -351,13 +349,7 @@ const [skills, setSkills] = useState(() => {
 ---
 
 
-
-## 📄 License
-
-Ce projet est sous license **MIT**. Voir [LICENSE](LICENSE) pour plus de détails.
-
 ---
 
 
 **© 2026 SkillBridge TN** • Connecter les talents aux opportunités 🚀
->>>>>>> dfb915b (add project files)

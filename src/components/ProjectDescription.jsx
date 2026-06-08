@@ -59,7 +59,6 @@ export default function ProjectDescription() {
       <section className="hero-section">
         <div className="hero-background"></div>
         <div className="hero-content">
-          <div className="hero-badge">🇹🇳 Innovation Tunisienne</div>
           <h1 className="hero-title">SkillBridge TN</h1>
           <p className="hero-subtitle">
             Connectez les talents aux opportunités
@@ -70,7 +69,7 @@ export default function ProjectDescription() {
           <div className="hero-tags">
             <IconBox icon="🌍" label="Tunisie" />
             <IconBox icon="🎯" label="ODD 8,9,17" />
-            <IconBox icon="🚀" label="Hackathon 2026" />
+            <IconBox icon="🚀" label="Youth_Speak Hackathon 2026" />
           </div>
         </div>
       </section>
