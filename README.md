@@ -11,22 +11,6 @@
 
 ---
 
-## 📋 Table des Matières
-
-- [Aperçu](#aperçu)
-- [Fonctionnalités](#fonctionnalités)
-- [Architecture](#architecture)
-- [Installation](#installation)
-- [Utilisation](#utilisation)
-- [Structure des Fichiers](#structure-des-fichiers)
-- [Technologies](#technologies)
-- [Améliorations UI](#améliorations-ui)
-- [Gestion des Données](#gestion-des-données)
-- [Patterns et Conventions](#patterns-et-conventions)
-- [Contribution](#contribution)
-
----
-
 ## 🎯 Aperçu
 
 **SkillBridge TN** est une solution complète de matching entre talents et entreprises. Elle permet aux:
